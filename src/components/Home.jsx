@@ -1,5 +1,5 @@
 import React from 'react';
-import Oneliner from './Oneliner.jsx';
+import Snippet from './Snippet.jsx';
 
 const Home = (props) => {
     return(

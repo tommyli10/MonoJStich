@@ -20,9 +20,10 @@ const Gallery = (props) => {
 
     // collection ref
 	const colRef = collection(db, 'oneliners');
+    const sortByTime = query(colRef, orderBy('createdAt', 'desc'))
 
     useEffect(() => {
-            onSnapshot(colRef, (snapshot) => {
+            onSnapshot(sortByTime, (snapshot) => {
                 setCodes(snapshot.docs);
             })
         }, []);
@@ -35,7 +36,7 @@ const Gallery = (props) => {
         <div className='d-flex flex-column'>
             {codes.map((doc, index) => {
                 const data = { ...doc.data(), id: doc.id };
-                // console.log(data)
+                console.log(data)
                 return <Oneliner oneliner={data} key={index}/>
             })}
         </div>

@@ -25,3 +25,22 @@ a {
 strong {
     font-style: italic;
 }
+
+.copy {
+    display: flex;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 400;
+}
+
+.scroll {
+    margin-right: 20px;
+    width: 450px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+}

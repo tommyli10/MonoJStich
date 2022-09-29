@@ -9,6 +9,21 @@ import {
 } from 'firebase/firestore';
 
 const Addline = (props) => {
+	// this function returns true if the code is value
+    // otherwise it returns false
+    const checkCodeValidity = (str) => {
+        // if (!new Function(eval(str))) {
+        //     return false;
+        // }
+		try {
+			!new Function(eval(str))
+			return true;		
+		}
+		catch {
+			return false;
+		}
+    };
+
 	// init firebase app
 	initializeApp(props.config);
 
@@ -25,7 +40,10 @@ const Addline = (props) => {
 		const code = document.getElementById('code');
 		const author = document.getElementById('author');
 
-		// console.log(title, code, author)
+		if (!checkCodeValidity(code.value)) {
+			window.alert('Invalid code!')
+			return;
+		}
 
 		addDoc(colRef, {
 			title: title.value,
@@ -39,16 +57,15 @@ const Addline = (props) => {
 				code.value = '';
 				author.value = '';
 			})
-
-		// window.location.href = 
 	};
+
 
     return (
         <div className='mt-5'>
             <form id='addLine' onSubmit={(e) => {e.preventDefault(); addLine()}}>
                 <label htmlFor="title">Title:</label>
                 <input type="text" name='title' id='name' required/>
-                <label htmlFor="code">Oneliner:</label>
+                <label htmlFor="code">Code:</label>
                 <input type="text" name='code' id='code' required/>
                 <label htmlFor="author">Author:</label>
                 <input type="text" name='author' id='author'/>

@@ -24,10 +24,10 @@ const Header = (props) => {
                     <li className="nav-item">
                         <a href="/all" className="nav-link text-right px-2">See all MonoJStichs</a>
                     </li>
-                    <li class="nav-item">
+                    <li className="nav-item">
                         <a href="/login" className="nav-link text-right px-2">Log in</a>
                     </li>
-                    <li class="nav-item">
+                    <li className="nav-item">
                         <a href="/signup" className="nav-link text-right px-2">Sign up</a>
                     </li>
                 </ul>

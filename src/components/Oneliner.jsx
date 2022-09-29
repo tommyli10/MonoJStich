@@ -6,8 +6,8 @@ const Oneliner = (props) => {
         <div className='my-5'>
             <h5 className='text-center'>{props.oneliner.title}</h5>
             <Snippet code={props.oneliner.code}/>
-            <div className='d-flex border-top border-dark mt-3'>
-                <p className='pt-2'>by&nbsp;<strong>{props.oneliner.author}</strong></p>
+            <div className='d-flex border-top border-dark mt-4'>
+                <p className='pt-2 mb-5'>by&nbsp;&nbsp;<strong className='font-italic'>{props.oneliner.author}</strong></p>
             </div>
         </div>
     );
