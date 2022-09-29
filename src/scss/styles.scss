@@ -1,0 +1,17 @@
+// @import '_variables';
+
+$lightOrange: #FFCA08;
+$darkOrange: #F57921;
+$lightBlue: #ACCEEC;
+$darkBlue: #398BD4;
+
+$lightBackground: #F2F2F2;
+$darkText: #212121;
+$lightText: #0D0D0D;
+
+
+body {
+    font-family: 'Merriweather', serif;
+    background-color: $lightBackground;
+    color: $darkText;
+}
