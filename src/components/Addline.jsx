@@ -44,7 +44,7 @@ const Addline = (props) => {
 	};
 
     return (
-        <div>
+        <div className='mt-5'>
             <form id='addLine' onSubmit={(e) => {e.preventDefault(); addLine()}}>
                 <label htmlFor="title">Title:</label>
                 <input type="text" name='title' id='name' required/>

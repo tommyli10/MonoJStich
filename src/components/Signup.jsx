@@ -29,7 +29,7 @@ const Signup = (props) => {
     };
 
     return (
-        <div>
+        <div className='mt-5'>
             <form id='signup' onSubmit={(e) => {e.preventDefault(); signUp()}}>
                 <label htmlFor="email">Email:</label>
                 <input type="text" name='email' id='email' required/>

@@ -27,26 +27,30 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <div className='container mt-5 px-0'>
           <Header />
-          <div>
-            <Switch>
-              <Route path='/addline'>
-                <Addline config={this.state.firebaseConfig}/>
-              </Route>
-              <Route path='/signup'>
-                <Signup config={this.state.firebaseConfig}/>
-              </Route>
-              <Route path='/login'>
-                <Login config={this.state.firebaseConfig}/>
-              </Route>
-              <Route path='/all'>
-                <Gallery config={this.state.firebaseConfig}/>
-              </Route>
-              <Route path='/'>
-                <Home />
-              </Route>
-            </Switch>
+          <div className='row mt-5'>
+            <div className='col-3'></div>
+            <div className='col-6'>
+              <Switch>
+                <Route path='/addline'>
+                  <Addline config={this.state.firebaseConfig}/>
+                </Route>
+                <Route path='/signup'>
+                  <Signup config={this.state.firebaseConfig}/>
+                </Route>
+                <Route path='/login'>
+                  <Login config={this.state.firebaseConfig}/>
+                </Route>
+                <Route path='/all'>
+                  <Gallery config={this.state.firebaseConfig}/>
+                </Route>
+                <Route path='/'>
+                  <Home />
+                </Route>
+              </Switch>
+            </div>
+            <div className='col-3'></div>
           </div>
         </div>
       </Router>

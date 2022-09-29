@@ -21,27 +21,14 @@ const Gallery = (props) => {
     // collection ref
 	const colRef = collection(db, 'oneliners');
 
-    const oneliners = [];
-
     useEffect(() => {
-            getDocs(colRef)
-                .then((snapshot) => {
-                    setCodes(snapshot.docs);
-                    // console.log(codes)
-                })
-                .catch((err) => {
-                    console.log(err.message);
-                })
-                    // snapshot.docs.forEach((doc) => {
-                    //     const data = { ...doc.data(), id: doc.id };
-                    //     oneliners.push(<Oneliner oneliner={data}/>)
-                    // }); 
-                    // setCode(snapshot.docs);
-                    // console.log(code)
+            onSnapshot(colRef, (snapshot) => {
+                setCodes(snapshot.docs);
+            })
         }, []);
 
     if (!codes) {
-        return <>Loading....</>
+        return <></>
     }
 
     return(
