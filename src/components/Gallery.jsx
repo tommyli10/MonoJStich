@@ -10,7 +10,7 @@ import {
 import Oneliner from './Oneliner.jsx';
 
 const Gallery = (props) => {
-    // const [code, setCode] = useState();
+    const [codes, setCodes] = useState();
 
     // init firebase app
     initializeApp(props.config);
@@ -24,28 +24,33 @@ const Gallery = (props) => {
     const oneliners = [];
 
     useEffect(() => {
-        const fetchData = async () => {
-            const snapshot = await getDocs(colRef);
-                // .then((snapshot) => {
-                    snapshot.docs.forEach((doc) => {
-                        const data = { ...doc.data(), id: doc.id };
-                        oneliners.push(<Oneliner oneliner={data}/>)
-                    });
+            getDocs(colRef)
+                .then((snapshot) => {
+                    setCodes(snapshot.docs);
+                    // console.log(codes)
+                })
+                .catch((err) => {
+                    console.log(err.message);
+                })
+                    // snapshot.docs.forEach((doc) => {
+                    //     const data = { ...doc.data(), id: doc.id };
+                    //     oneliners.push(<Oneliner oneliner={data}/>)
+                    // }); 
                     // setCode(snapshot.docs);
-                // })
-        }
+                    // console.log(code)
+        }, []);
 
-        fetchData()
-    }, []);
-
-    // if (code === undefined) {
-    //     return <>Still loading....</>
-    // }
+    if (!codes) {
+        return <>Loading....</>
+    }
 
     return(
-        <div className='d-flex'>
-            <h1>hi</h1>
-            {oneliners}
+        <div className='d-flex flex-column'>
+            {codes.map((doc, index) => {
+                const data = { ...doc.data(), id: doc.id };
+                // console.log(data)
+                return <Oneliner oneliner={data} key={index}/>
+            })}
         </div>
     );
 };

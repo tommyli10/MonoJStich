@@ -4,7 +4,7 @@ const Header = (props) => {
     return(
         <div className='d-flex'>
             <div>
-                <a href="#">Haicode</a>
+                <a href="/">MonoJStich</a>
             </div>
             <div>
                 <a href="/all">See all Haicodes</a>

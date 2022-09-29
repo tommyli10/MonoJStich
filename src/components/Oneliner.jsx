@@ -1,8 +1,6 @@
 import React from 'react';
 
-const Oneliner = (props) => {
-    console.log(props)
-
+const Oneliner = (props) => {   
     return (
         <div>
             <h3>{props.oneliner.title}</h3>

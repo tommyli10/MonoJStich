@@ -30,7 +30,7 @@ const Addline = (props) => {
 		addDoc(colRef, {
 			title: title.value,
 			code : code.value,
-			author: author.value,
+			author: author.value ? author.value : 'Unknown',
 			createdAt: serverTimestamp()
 		})
 			.then(() => {
