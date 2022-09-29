@@ -9,6 +9,7 @@ import {
 
 
 const Login = (props) => {
+	// console.log(props.switchUser)
     // init firebase app
     initializeApp(props.config);
 
@@ -21,19 +22,23 @@ const Login = (props) => {
 
 		signInWithEmailAndPassword(auth, email, password)
 			.then((cred) => {
-				window.location.href = 'http://localhost:3000/';
+				console.log(cred.user.uid);
+				props.switchUser(cred.user.uid);
+				window.location.href = 'http://localhost:3000/all';
 			})
 			.catch((err) => {
 				console.log(err.message);
 			})
 	};
 
+	// console.log(props.user)
+
 	return (
         <div className='mt-5'>
             <form id='login' onSubmit={(e) => {e.preventDefault(); login()}}>
                 <label htmlFor="email">Email:</label>
                 <input type="text" name='email' id='email' required/>
-                <label htmlFor="password">Oneliner:</label>
+                <label htmlFor="password">Password:</label>
                 <input type="password" name='password' id='password' required/>
 
 				<button>Login</button>

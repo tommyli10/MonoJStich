@@ -1,17 +1,30 @@
 import React from 'react';
+import { initializeApp } from 'firebase/app';
+import {
+	getAuth,
+	createUserWithEmailAndPassword,
+	signOut, signInWithEmailAndPassword,
+	onAuthStateChanged
+} from 'firebase/auth';
 
 const Header = (props) => {
+    // init firebase app
+    initializeApp(props.config);
+
+    // init services
+    const auth = getAuth();
+
+    const logout = () => {
+        signOut(auth)
+            .then(() => {
+                console.log('user signed out')
+            })
+            .catch((err) => {
+                console.log(err.message);
+            })
+    }
+
     return(
-        // <div className='row'>
-        //     <div className='col-2'>
-        //         <a href="/">MonoJStich</a>
-        //     </div>
-        //     <div className='col-10'>
-        //         <a href="/all">See all MonoJStichs</a>
-        //         <a href="/login">Sign In</a>
-        //         <a href="/signup">Sign Up</a>
-        //     </div>
-        // </div>
         <div className='col-12'>
             <nav id="mainNavbar" className="navbar navbar-light navbar-expand-md py-0">
                 <a href="/home" className="navbar-brand">MonoJStich</a>
@@ -31,6 +44,7 @@ const Header = (props) => {
                         <a href="/signup" className="nav-link text-right px-2">Sign up</a>
                     </li>
                 </ul>
+                <a href="/home" onClick={logout} className='border border-dark' id='logout'>Logout</a>
                 </div>
             </nav>
         </div>

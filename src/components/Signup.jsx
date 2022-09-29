@@ -33,7 +33,7 @@ const Signup = (props) => {
             <form id='signup' onSubmit={(e) => {e.preventDefault(); signUp()}}>
                 <label htmlFor="email">Email:</label>
                 <input type="text" name='email' id='email' required/>
-                <label htmlFor="password">Oneliner:</label>
+                <label htmlFor="password">Password:</label>
                 <input type="password" name='password' id='password' required/>
 
 				<button>Sign up</button>

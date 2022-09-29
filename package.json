@@ -16,7 +16,9 @@
   "dependencies": {
     "bootstrap": "^5.2.1",
     "browserify": "^17.0.0",
+    "cookie-parser": "^1.4.6",
     "express": "^4.12.3",
+    "express-session": "^1.17.3",
     "firebase": "^9.10.0",
     "gulp": "^4.0.2",
     "prop-types": "^15.6.1",
