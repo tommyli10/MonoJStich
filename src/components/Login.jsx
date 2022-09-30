@@ -9,6 +9,11 @@ import {
 
 
 const Login = (props) => {
+	// if the user already logged in, redirect to user home page
+	if (props.user) {
+		window.location.href = 'http://localhost:3000/userhome';
+	}
+
 	// console.log(props.switchUser)
     // init firebase app
     initializeApp(props.config);
@@ -22,9 +27,9 @@ const Login = (props) => {
 
 		signInWithEmailAndPassword(auth, email, password)
 			.then((cred) => {
-				console.log(cred.user.uid);
-				props.switchUser(cred.user.uid);
-				window.location.href = 'http://localhost:3000/all';
+				console.log(cred);
+				props.switchUser(cred.user.uid, cred.user.Identifier);
+				window.location.href = 'http://localhost:3000/userhome';
 			})
 			.catch((err) => {
 				console.log(err.message);
@@ -35,12 +40,18 @@ const Login = (props) => {
 
 	return (
         <div className='mt-5'>
+			<h2 className='text-center mb-5'>Login</h2>
             <form id='login' onSubmit={(e) => {e.preventDefault(); login()}}>
                 <label htmlFor="email">Email:</label>
-                <input type="text" name='email' id='email' required/>
-                <label htmlFor="password">Password:</label>
-                <input type="password" name='password' id='password' required/>
-
+                <br />
+				<input type="text" name='email' id='email' required/>
+                <br />
+                <br />
+				<label htmlFor="password">Password:</label>
+                <br />
+				<input type="password" name='password' id='password' required/>
+				<br />
+				<br />
 				<button>Login</button>
             </form>
         </div>

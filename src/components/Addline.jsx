@@ -9,6 +9,13 @@ import {
 } from 'firebase/firestore';
 
 const Addline = (props) => {
+	// console.log(props.user)
+	// setTimeout(() => {
+	// 	if (props.user === null) {
+	// 		window.location.href = 'http://localhost:3000/login';
+	// 	}
+	// }, 100);
+
 	// this function returns true if the code is value
     // otherwise it returns false
     const checkCodeValidity = (str) => {
@@ -62,14 +69,23 @@ const Addline = (props) => {
 
     return (
         <div className='mt-5'>
+			<h2 className='text-center mb-5'>Add a new line</h2>
             <form id='addLine' onSubmit={(e) => {e.preventDefault(); addLine()}}>
-                <label htmlFor="title">Title:</label>
+                <label htmlFor="title">Title: &nbsp;  &nbsp; </label>
+				<br />
                 <input type="text" name='title' id='name' required/>
-                <label htmlFor="code">Code:</label>
+				<br />
+				<br />
+                <label htmlFor="code">Code: &nbsp;  &nbsp; </label>
+				<br />
                 <input type="text" name='code' id='code' required/>
-                <label htmlFor="author">Author:</label>
-                <input type="text" name='author' id='author'/>
-
+				<br />
+				<br />
+                <label htmlFor="code">Author: &nbsp;  &nbsp; </label>
+				<br />
+                <input type="text" name='code' id='author' required/>
+				<br />
+				<br />
 				<button>Submit</button>
             </form>
         </div>

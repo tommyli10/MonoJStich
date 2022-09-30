@@ -17,6 +17,7 @@ import Oneliner from './Oneliner.jsx';
 
 const Userhome = (props) => {
     const [codes, setCodes] = useState();
+    // console.log(props.user)
 
     // init firebase app
     initializeApp(props.config);
@@ -26,11 +27,20 @@ const Userhome = (props) => {
 
     // collection ref
 	const colRef = collection(db, 'oneliners');
-    const usersRef = collection(db, 'monousers');
-    const sortByTime = query(colRef, orderBy('createdAt', 'desc'))
+    // const usersRef = collection(db, 'monousers');
+
+    // get user from user database
+    const q = query(colRef, where('authorID', '==', props.user))
+
+
+    // console.log(doc)
+
+    // const usersRef = collection(db, 'monousers');
+    const sortByTime = query(colRef, orderBy('createdAt', 'desc'));
 
     useEffect(() => {
-            onSnapshot(sortByTime, (snapshot) => {
+            onSnapshot(colRef, (snapshot) => {
+                // console.log(snapshot.docs)
                 setCodes(snapshot.docs);
             })
         }, []);
@@ -48,11 +58,14 @@ const Userhome = (props) => {
                 </div>
             </div>
 
-            {codes.map((doc, index) => {
-                const data = { ...doc.data(), id: doc.id };
-                console.log(data)
-                return <Oneliner oneliner={data} key={index}/>
-            })}
+            <div className='mt-5 border-top border-dark'>
+                <h2 className='text-center my-5'>Manage MonoJStichs</h2>
+                {codes.map((doc, index) => {
+                    const data = { ...doc.data(), id: doc.id };
+                    // console.log(data)
+                    return <Oneliner config={props.config} oneliner={data} key={index} fromUser={true}/>
+                })}
+            </div>
         </div>
     );
 };

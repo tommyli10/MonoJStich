@@ -19,11 +19,8 @@ a {
 
     &:hover {
         color: $lightText;
+        cursor: pointer;
     }
-}
-
-strong {
-    font-style: italic;
 }
 
 .copy {
@@ -43,4 +40,12 @@ strong {
     flex: 2;
     display: flex;
     flex-direction: column;
+}
+
+form {
+    width: 100%;
+
+    input {
+        width: 100%;
+    }
 }

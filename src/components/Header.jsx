@@ -8,13 +8,24 @@ import {
 } from 'firebase/auth';
 
 const Header = (props) => {
+    let logoutBtn = null;
+    let home = null;
+    let signupBtn = null;
+    let loginBtn = null;
+    if (props.user) {
+        logoutBtn = <a href="/home" onClick={logout} className="nav-link text-right px-2 flex-grow" id='logout'>Logout</a>
+        home = <a href="/userhome" className="nav-link text-right px-2" id='logout'>Home</a>
+    }
+
     // init firebase app
     initializeApp(props.config);
 
     // init services
     const auth = getAuth();
 
-    const logout = () => {
+    // this function is declared after the event call, so we can't use arrow function
+    function logout() {
+        console.log('click')
         signOut(auth)
             .then(() => {
                 console.log('user signed out')
@@ -26,7 +37,7 @@ const Header = (props) => {
 
     return(
         <div className='col-12'>
-            <nav id="mainNavbar" className="navbar navbar-light navbar-expand-md py-0">
+            <nav id="mainNavbar" className="navbar navbar-light navbar-expand-lg py-0">
                 <a href="/home" className="navbar-brand">MonoJStich</a>
                 <button className="navbar-toggler" data-toggle="collapse" data-target="#navLinks"
                 aria-label="Toggle navigation">
@@ -38,13 +49,17 @@ const Header = (props) => {
                         <a href="/all" className="nav-link text-right px-2">See all MonoJStichs</a>
                     </li>
                     <li className="nav-item">
+                        <a href="/addline" className="nav-link text-right px-2">Compose</a>
+                    </li>
+                    <li className="nav-item">
                         <a href="/login" className="nav-link text-right px-2">Log in</a>
                     </li>
                     <li className="nav-item">
                         <a href="/signup" className="nav-link text-right px-2">Sign up</a>
                     </li>
+                    <li>{home}</li>
                 </ul>
-                <a href="/home" onClick={logout} className='border border-dark' id='logout'>Logout</a>
+                {logoutBtn}
                 </div>
             </nav>
         </div>

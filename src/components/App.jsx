@@ -37,7 +37,8 @@ class App extends Component {
       appId: "1:1068267291914:web:06c7706618928bf67726f3",
       measurementId: "G-VXH1SVPYHH"
       },
-      currentUser: null
+      currentUser: null,
+      currentUserEmail: null
     }
     this.switchUser = this.switchUser.bind(this);
   }
@@ -62,8 +63,8 @@ class App extends Component {
 
   }
 
-  switchUser(newUser) {
-    this.setState({...this.state, currentUser: newUser})
+  switchUser(newUser, newEmail) {
+    this.setState({...this.state, currentUser: newUser, currentUserEmail: newEmail})
   }
 
   render() {

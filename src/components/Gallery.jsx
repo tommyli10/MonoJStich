@@ -37,7 +37,7 @@ const Gallery = (props) => {
             {codes.map((doc, index) => {
                 const data = { ...doc.data(), id: doc.id };
                 // console.log(data)
-                return <Oneliner oneliner={data} key={index}/>
+                return <Oneliner config={props.config} oneliner={data} key={index}/>
             })}
         </div>
     );
