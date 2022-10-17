@@ -83,7 +83,7 @@ const Addline = (props) => {
 				<br />
                 <label htmlFor="code">Author: &nbsp;  &nbsp; </label>
 				<br />
-                <input type="text" name='code' id='author' required/>
+                <input type="text" name='code' id='author'/>
 				<br />
 				<br />
 				<button>Submit</button>

@@ -25,9 +25,16 @@ const Oneliner = (props) => {
 		})
     }
 
+    // update code event
+    // const updateCode = () => {
+
+    // }
+
     let deleteButton = null;
+    let updateButton = null;
     if (props.fromUser) {
-        deleteButton = <a className='p-0 border-0 pt-2' onClick={deleteCode}>Delete Code</a>;
+        deleteButton = <a className='p-0 border-0 pt-2 ml-4' onClick={deleteCode}>Delete Code</a>;
+        updateButton = <a className='p-0 border-0 pt-2'>Update Code</a>;
     }
 
     return (
@@ -36,6 +43,7 @@ const Oneliner = (props) => {
             <Snippet code={props.oneliner.code}/>
             <div className='d-flex flex-between border-top border-dark mt-4'>
                 <p className='pt-2 mb-5 flex-grow-1'>by&nbsp;&nbsp;<strong className='font-italic'>{props.oneliner.author}</strong></p>
+                {updateButton}
                 {deleteButton}
             </div>
         </div>
