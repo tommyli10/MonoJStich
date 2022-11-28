@@ -1,1 +1,3 @@
 # MonoJstich
+Coming soon....
+Note: I am currently refactoring the code and adding testing function to submitted code snippets
