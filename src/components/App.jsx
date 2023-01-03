@@ -29,14 +29,14 @@ class App extends Component {
     super(props);
 
     this.state = {firebaseConfig : {
-      apiKey: "AIzaSyD_Dn4SrqQGddzYKscHXuxxUdAuv5TpuTI",
-      authDomain: "firebasics-b4ace.firebaseapp.com",
-      projectId: "firebasics-b4ace",
-      storageBucket: "firebasics-b4ace.appspot.com",
-      messagingSenderId: "1068267291914",
-      appId: "1:1068267291914:web:06c7706618928bf67726f3",
-      measurementId: "G-VXH1SVPYHH"
-      },
+      apiKey: "AIzaSyDMa4W8v8lldPvj5ntKvH4aXzO3aV36tnI",
+      authDomain: "tommysapp-2a2d6.firebaseapp.com",
+      projectId: "tommysapp-2a2d6",
+      storageBucket: "tommysapp-2a2d6.appspot.com",
+      messagingSenderId: "726157073925",
+      appId: "1:726157073925:web:b022ed1b85a83e108c466c",
+      measurementId: "G-RVNNBMYG50"
+    },
       currentUser: null,
       currentUserEmail: null
     }

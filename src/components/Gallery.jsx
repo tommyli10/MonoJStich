@@ -34,9 +34,10 @@ const Gallery = (props) => {
 
     return(
         <div className='d-flex flex-column'>
+            <h3>Firebase database is currently down while site is being rebuilt</h3>
             {codes.map((doc, index) => {
                 const data = { ...doc.data(), id: doc.id };
-                // console.log(data)
+                console.log('gallery data', data)
                 return <Oneliner config={props.config} oneliner={data} key={index}/>
             })}
         </div>

@@ -19,9 +19,6 @@ const Addline = (props) => {
 	// this function returns true if the code is value
     // otherwise it returns false
     const checkCodeValidity = (str) => {
-        // if (!new Function(eval(str))) {
-        //     return false;
-        // }
 		try {
 			!new Function(eval(str))
 			return true;		
