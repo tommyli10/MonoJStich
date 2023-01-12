@@ -17,7 +17,9 @@ const Gallery = (props) => {
 
     // init services
     const db = getFirestore();
-
+    
+    console.log('codes', codes)
+    console.log('props', props)
     // collection ref
 	const colRef = collection(db, 'oneliners');
     const sortByTime = query(colRef, orderBy('createdAt', 'desc'))
@@ -34,7 +36,6 @@ const Gallery = (props) => {
 
     return(
         <div className='d-flex flex-column'>
-            <h3>Firebase database is currently down while site is being rebuilt</h3>
             {codes.map((doc, index) => {
                 const data = { ...doc.data(), id: doc.id };
                 console.log('gallery data', data)
