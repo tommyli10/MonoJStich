@@ -5,4 +5,4 @@
 
 <img src="./screens/monojstick-2.png">
 <br />
-<img src="./screens/monojstick.png">
+<img src="./screens/monojstick-1.png">
