@@ -1,4 +1,7 @@
 # MonoJstich
-Built with React and Google Firebase
+<p>A place for people to share their favorite Javascript oneliners</p>
 
-Note: The site is currently down because I am currently refactoring the code and adding testing function to submitted code snippets
+<p>Built with React Google Firebase Authentication, and Firestore real time database<p>
+
+<img src="./screens/monojstick-2.png" height="120">
+<img src="./screens/monojstick.png" height="120">
