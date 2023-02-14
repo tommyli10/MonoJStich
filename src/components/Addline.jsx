@@ -25,7 +25,7 @@ const Addline = (props) => {
 	// init firebase app
 	initializeApp(props.config);
 
-	// init services
+	// init Firestore services
 	const db = getFirestore();
 
 	// collection ref
@@ -33,19 +33,16 @@ const Addline = (props) => {
 
 	// add code snippet to Firestore database
 	const addLine = () => {
-		const title = document.getElementById('name');
-		const code = document.getElementById('code');
-		const author = document.getElementById('author');
-
-		if (!checkCodeValidity(code.value)) {
+		// test code validity before submitting
+		if (!checkCodeValidity(code)) {
 			window.alert('Invalid code!')
 			return;
 		}
 
 		addDoc(colRef, {
-			title: title.value,
-			code: code.value,
-			author: author.value.length ? author.value : 'Unknown',
+			title: title,
+			code: code,
+			author: author.length ? author : 'Unknown',
 			createdAt: serverTimestamp()
 		})
 			.then(() => {
