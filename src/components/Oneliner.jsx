@@ -25,11 +25,6 @@ const Oneliner = (props) => {
 		})
     }
 
-    // update code event
-    // const updateCode = () => {
-
-    // }
-
     let deleteButton = null;
     let updateButton = null;
     if (props.fromUser) {

@@ -1,22 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { initializeApp } from 'firebase/app';
-import {
-	getFirestore, collection, getDocs, onSnapshot,
-	addDoc, deleteDoc, doc,
-	query, where,
-	orderBy, serverTimestamp,
-	getDoc, updateDoc
-} from 'firebase/firestore';
-import {
-	getAuth,
-	createUserWithEmailAndPassword,
-	signOut, signInWithEmailAndPassword,
-	onAuthStateChanged
-} from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 import Header from './Header.jsx';
-import Oneliner from './Oneliner.jsx';
 import Home from './Home.jsx';
 import Addline from './Addline.jsx';
 import Signup from './Signup.jsx';
@@ -48,7 +36,6 @@ class App extends Component {
     initializeApp(this.state.firebaseConfig);
 
     // init services
-    const db = getFirestore();
     const auth = getAuth();
 
     const unsubAuth = onAuthStateChanged(auth, (user) => {

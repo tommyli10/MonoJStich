@@ -3,7 +3,6 @@ import React from 'react';
 const Snippet = (props) => {
     // copy to clipboard
     function copyToClipboard(e) {
-      // console.log(e.target.closest('.copy'))
       const parent = e.target.closest('.copy');
       const code = parent.querySelector('p').textContent;
       

@@ -1,32 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { initializeApp } from 'firebase/app';
 import {
-	getFirestore, collection, getDocs, onSnapshot,
-	addDoc, deleteDoc, doc,
-	query, where,
-	orderBy, serverTimestamp,
-	getDoc, updateDoc
+	getFirestore, collection,
+	addDoc, serverTimestamp,
 } from 'firebase/firestore';
 
 const Addline = (props) => {
-	// console.log(props.user)
-	// setTimeout(() => {
-	// 	if (props.user === null) {
-	// 		window.location.href = 'http://localhost:3000/login';
-	// 	}
-	// }, 100);
+	const [title, setTitle] = useState('');
+	const [code, setCode] = useState('');
+	const [author, setAuthor] = useState('');
 
-	// this function returns true if the code is value
-    // otherwise it returns false
-    const checkCodeValidity = (str) => {
+	// this function returns true if the code being submitted is valid
+	// otherwise it returns false and nothing will be uploaded to Firestore
+	const checkCodeValidity = (str) => {
 		try {
 			!new Function(eval(str))
-			return true;		
+			return true;
 		}
 		catch {
 			return false;
 		}
-    };
+	};
 
 	// init firebase app
 	initializeApp(props.config);
@@ -37,8 +31,7 @@ const Addline = (props) => {
 	// collection ref
 	const colRef = collection(db, 'oneliners');
 
-	// add line
-	// const addLine = document.getElementById('addLine');
+	// add code snippet to Firestore database
 	const addLine = () => {
 		const title = document.getElementById('name');
 		const code = document.getElementById('code');
@@ -51,42 +44,42 @@ const Addline = (props) => {
 
 		addDoc(colRef, {
 			title: title.value,
-			code : code.value,
-			author: author.value ? author.value : 'Unknown',
+			code: code.value,
+			author: author.value.length ? author.value : 'Unknown',
 			createdAt: serverTimestamp()
 		})
 			.then(() => {
 				// reset form after submit
-				title.value = '';
-				code.value = '';
-				author.value = '';
+				setTitle('');
+				setCode('');
+				setAuthor('');
 			})
 	};
 
 
-    return (
-        <div className='mt-5'>
+	return (
+		<div className='mt-5'>
 			<h2 className='text-center mb-5'>Add a new line</h2>
-            <form id='addLine' onSubmit={(e) => {e.preventDefault(); addLine()}}>
-                <label htmlFor="title">Title: &nbsp;  &nbsp; </label>
+			<form id='addLine' onSubmit={(e) => {
+				e.preventDefault();
+				addLine();
+			}}>
+				<label htmlFor="title">Title: &nbsp;  &nbsp; </label>
 				<br />
-                <input type="text" name='title' id='name' required/>
+				<input type="text" name='title' id='name' value={title} onChange={(e) => { setTitle(e.target.value) }} required />
 				<br />
+				<label htmlFor="code">Code: &nbsp;  &nbsp; </label>
 				<br />
-                <label htmlFor="code">Code: &nbsp;  &nbsp; </label>
+				<input type="text" name='code' id='code' value={code} onChange={(e) => { setCode(e.target.value) }} required />
 				<br />
-                <input type="text" name='code' id='code' required/>
+				<label htmlFor="code">Author: &nbsp;  &nbsp; </label>
 				<br />
-				<br />
-                <label htmlFor="code">Author: &nbsp;  &nbsp; </label>
-				<br />
-                <input type="text" name='code' id='author'/>
-				<br />
+				<input type="text" name='code' id='author' value={author} onChange={(e) => { setAuthor(e.target.value) }} />
 				<br />
 				<button>Submit</button>
-            </form>
-        </div>
-    );
+			</form>
+		</div>
+	);
 };
 
 export default Addline;

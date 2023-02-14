@@ -2,9 +2,7 @@ import React from 'react';
 import { initializeApp } from 'firebase/app';
 import {
 	getAuth,
-	createUserWithEmailAndPassword,
-	signOut, signInWithEmailAndPassword,
-	onAuthStateChanged
+	signInWithEmailAndPassword
 } from 'firebase/auth';
 
 
@@ -14,7 +12,6 @@ const Login = (props) => {
 		window.location.href = 'http://localhost:3000/userhome';
 	}
 
-	// console.log(props.switchUser)
     // init firebase app
     initializeApp(props.config);
 
@@ -35,8 +32,6 @@ const Login = (props) => {
 				console.log(err.message);
 			})
 	};
-
-	// console.log(props.user)
 
 	return (
         <div className='mt-5'>

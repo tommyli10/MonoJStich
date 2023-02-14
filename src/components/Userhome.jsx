@@ -1,18 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { initializeApp } from 'firebase/app';
 import {
-	getFirestore, collection, getDocs, onSnapshot,
-	addDoc, deleteDoc, doc,
-	query, where,
-	orderBy, serverTimestamp,
-	getDoc, updateDoc
+	getFirestore, collection,
+    onSnapshot, query, 
+    where, orderBy
 } from 'firebase/firestore';
-import {
-	getAuth,
-	createUserWithEmailAndPassword,
-	signOut, signInWithEmailAndPassword,
-	onAuthStateChanged
-} from 'firebase/auth';
 import Oneliner from './Oneliner.jsx';
 
 const Userhome = (props) => {
@@ -21,22 +13,6 @@ const Userhome = (props) => {
 
     // init firebase app
     initializeApp(props.config);
-
-    // init services
-    const db = getFirestore();
-
-    // collection ref
-	const colRef = collection(db, 'oneliners');
-    // const usersRef = collection(db, 'monousers');
-
-    // get user from user database
-    const q = query(colRef, where('authorID', '==', props.user))
-
-
-    // console.log(doc)
-
-    // const usersRef = collection(db, 'monousers');
-    const sortByTime = query(colRef, orderBy('createdAt', 'desc'));
 
     useEffect(() => {
             onSnapshot(colRef, (snapshot) => {

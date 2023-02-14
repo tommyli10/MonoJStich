@@ -1,7 +1,6 @@
 import React from 'react';
-import Snippet from './Snippet.jsx';
 
-const Home = (props) => {
+const Home = () => {
     return(
         <div className='mt-5'>
             <h1 className='text-center'>Why write more code when few code do trick</h1>

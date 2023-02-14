@@ -2,9 +2,7 @@ import React from 'react';
 import { initializeApp } from 'firebase/app';
 import {
 	getAuth,
-	createUserWithEmailAndPassword,
-	signOut, signInWithEmailAndPassword,
-	onAuthStateChanged
+	createUserWithEmailAndPassword
 } from 'firebase/auth';
 
 
